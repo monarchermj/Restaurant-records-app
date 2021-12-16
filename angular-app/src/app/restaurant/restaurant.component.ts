@@ -13,7 +13,10 @@ export class RestaurantComponent implements OnInit {
 
   restaurantModelObj: RestaurantData = new RestaurantData();
 
-  allRestaurantData;
+  allRestaurantData: any;
+
+  showAdd!: boolean;
+  showbtn!: boolean;
 
   constructor(private formBuilder: FormBuilder, private api: ApiService) {}
 
@@ -27,7 +30,13 @@ export class RestaurantComponent implements OnInit {
     });
     this.getAlldata();
   }
-  
+
+  clickAddResto() {
+    this.formValue.reset();
+    this.showAdd = true;
+    this.showbtn = false;
+  }
+
   addResto() {
     this.restaurantModelObj.name = this.formValue.value.name;
     this.restaurantModelObj.email = this.formValue.value.email;
@@ -54,15 +63,17 @@ export class RestaurantComponent implements OnInit {
     });
   }
 
-  deleteResto(data:any){
-    this.api.deleteRestaurant(data.id).subscribe(res=>{
-      alert("Restaurant Deleted!")
+  deleteResto(data: any) {
+    this.api.deleteRestaurant(data.id).subscribe((res) => {
+      alert('Restaurant Deleted!');
       this.getAlldata();
-    })
+    });
   }
 
-  onEditResto(data:any){
-    this.restaurantModelObj.id=data.id;
+  onEditResto(data: any) {
+    this.showAdd = false;
+    this.showbtn = true;
+    this.restaurantModelObj.id = data.id;
     this.formValue.controls['name'].setValue(data.name);
     this.formValue.controls['email'].setValue(data.email);
     this.formValue.controls['mobile'].setValue(data.mobile);
@@ -70,16 +81,18 @@ export class RestaurantComponent implements OnInit {
     this.formValue.controls['services'].setValue(data.services);
   }
 
-  updateResto(){
+  updateResto() {
     this.restaurantModelObj.name = this.formValue.value.name;
     this.restaurantModelObj.email = this.formValue.value.email;
     this.restaurantModelObj.mobile = this.formValue.value.mobile;
     this.restaurantModelObj.address = this.formValue.value.address;
     this.restaurantModelObj.services = this.formValue.value.services;
 
-    this.api.updateRestaurant(this.restaurantModelObj,this.restaurantModelObj.id).subscribe(res=>{
-      alert("Restaurant Records Updated!")
-      this.getAlldata();
-    })
+    this.api
+      .updateRestaurant(this.restaurantModelObj, this.restaurantModelObj.id)
+      .subscribe((res) => {
+        alert('Restaurant Records Updated!');
+        this.getAlldata();
+      });
   }
 }
