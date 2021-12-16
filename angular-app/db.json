@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "id": 2,
+      "name": "rollsking",
+      "email": "rollsking@gmail.com",
+      "mobile": "684546",
+      "address": "xyz road",
+      "services": "mary jane"
+    },
+    {
+      "id": 3,
+      "name": "xyz",
+      "email": "ooop@yahoo.in",
+      "mobile": "54894",
+      "address": "0eodkoe",
+      "services": "heroine"
+    },
+    {
+      "id": 4,
+      "name": "test",
+      "email": "ojfpwod",
+      "mobile": "nwif",
+      "address": "ojdfpwe",
+      "services": "ojkqdpoq"
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

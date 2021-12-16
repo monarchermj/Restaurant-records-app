@@ -1,0 +1,90 @@
+<nav class="navbar navbar-light bg-primary">
+    <nav class="container-fluid">
+        <h2>Restaurant Record App</h2>
+        <div class="d-flex">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Restaurant</button>
+        </div>
+    </nav>
+</nav>
+
+<!--Jumbotron-->
+
+<div class="p-5 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Restaurant Records Management</h1>
+        <p class="col-md-8 fs-4">You can save Records of Restaurant using Angular 12</p>
+        <a class="btn btn-primary btn-lg" target="_blank" type="button" href="https://www.google.com/imgres?imgurl=https%3A%2F%2Fpreview.redd.it%2Flxwheciad6541.jpg%3Fauto%3Dwebp%26s%3D8eec19a767505958d914a7a80e864ebb0b639e42&imgrefurl=https%3A%2F%2Fwww.reddit.com%2Fr%2FTIHI%2Fcomments%2Febuw65%2Fthanks_i_hate_obama_boobies%2F&tbnid=my4Yje1rQacubM&vet=12ahUKEwjIraL_y-L0AhVA_jgGHTbKD-UQMygGegUIARCQAQ..i&docid=TG0oP4zxAfXoVM&w=570&h=627&itg=1&q=boobies&ved=2ahUKEwjIraL_y-L0AhVA_jgGHTbKD-UQMygGegUIARCQAQ">Boobies</a>
+    </div>
+</div>
+<!--End of Jumbotron-->
+<!--Table Shown Here-->
+<table class="table mt-4">
+    <thead>
+        <tr>
+            <th scope="col">Restaurant ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Address</th>
+            <th scope="col">Service</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of allRestaurantData">
+            <td>{{data.id}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.mobile}}</td>
+            <td>{{data.address}}</td>
+            <td>{{data.services}}</td>
+            <td>
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)='onEditResto(data)'>Edit</button>&nbsp;
+                <button class="btn btn-danger" (click)='deleteResto(data)'>Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Restaurant Record Form</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue">
+                <div class="mb-3">
+                  <label class="form-label">Name</label>
+                  <input type="text" formControlName="name" class="form-control" placeholder="Restaurant Name Here"  id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Email ID</label>
+                  <input type="email" formControlName="email" class="form-control" placeholder="Restaurant Email Here" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mobile</label>
+                    <input type="text" formControlName="mobile" class="form-control" placeholder="Restaurant Mobile" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Address</label>
+                    <input type="text" formControlName="address" class="form-control" placeholder="Restaurant Address" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Service</label>
+                    <input type="text" formControlName="services" class="form-control" placeholder="Restaurant Services Provided" id="exampleInputPassword1">
+                </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="addResto()" >Add Details</button>
+          <button type="button" class="btn btn-primary" (click)="updateResto()" >Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
