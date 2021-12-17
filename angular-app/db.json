@@ -25,6 +25,22 @@
       "services": "ojkqdpoq"
     }
   ],
+  "signup": [
+    {
+      "name": "ascca",
+      "email": "cecqcce",
+      "mobile": "1231231",
+      "password": "2313dqwqd",
+      "id": 1
+    },
+    {
+      "name": "monark jain",
+      "email": "jainmonark145@gmail.com",
+      "mobile": "9953210145",
+      "password": "mj@9953210145",
+      "id": 2
+    }
+  ],
   "comments": [],
   "profile": {
     "name": "typicode"
